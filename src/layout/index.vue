@@ -1,33 +1,28 @@
 <template>
-  <div class=" relative h-screenl w-full from-green-400 to-blue-500">
+  <div class="h-screenl w-full from-green-400 to-blue-500">
     <!-- 头部区域 -->
-    <div class=" w-screen flex justify-center items-center text-black">
-      <div class="w-4/5 flex justify-center items-center">
-        <div class="w-1/5" v-for="(item, index) in routes" :key="index">
-          <span class="hover:text-dark-50">
-            <router-link :to="item.path" class="a">{{ item.name }}</router-link>
-          </span>
-        </div>
-      </div>
-    </div>
-    <!--  -->
-    <div class="w-full h-full text-light-200" >
-      <!-- <home /> -->
+    <div style="width: 200px"></div>
+    <div class="w-full h-full">
+      <!-- <el-button type="primary" @click="toggleDark()">
+        <i inline-flex i="dark:ep-moon ep-sunny" />
+      </el-button> -->
       <RouterView />
-      <router-view v-slot="{ Component,route }">
-        <transition>
-          <keep-alive :include="routes">
-            <component :is="Component" :key="route.fullPath"/>
-          </keep-alive>
-        </transition>
-      </router-view>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-// import home from "@/views/home/index.vue";
-import { routes } from "@/router";
+// import { Location, } from '@element-plus/icons-vue'
+// import { toggleDark } from '@/util/dark'
+
+const router = useRouter()
+const list = router.getRoutes().filter((v) => v.meta.isShow)
+console.log('list', list.values)
+
+const isCollapse = ref(true)
+const handleOpen = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
+const handleClose = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
 </script>
-
-
-

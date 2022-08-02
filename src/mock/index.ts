@@ -10,20 +10,20 @@ import list from './data/list'
 // mock的配置
 Mock.setup({
   // 随机延时50-1000毫秒
-  timeout: '50-1000'
+  timeout: '50-1000',
 })
 
 Mock.mock(/\/list/, 'get', () => {
   return {
     code: 0,
-    data: list
+    data: list,
   }
 })
 // 轮播图
 Mock.mock(/\/swiperList/, 'get', () => {
   return {
     code: 0,
-    result: swiperList
+    result: swiperList,
   }
 })
 
@@ -31,21 +31,21 @@ Mock.mock(/\/swiperList/, 'get', () => {
 Mock.mock(/\/navList/, 'get', () => {
   return {
     code: 0,
-    result: navList
+    result: navList,
   }
 })
 
 Mock.mock(/\/videosList/, 'get', () => {
   return {
     code: 0,
-    result: videosList
+    result: videosList,
   }
 })
 
 Mock.mock(/\/recommendList/, 'get', () => {
   return {
     code: 0,
-    result: recommendList
+    result: recommendList,
   }
 })
 
@@ -54,13 +54,13 @@ Mock.mock(/\/commentsList/, 'get', () => {
     code: 0,
     result: {
       count: 454,
-      items: commentsList
-    }
+      items: commentsList,
+    },
   }
 })
 
 interface IMockConfig {
-  body: string | null;
+  body: string | null
   type: string
   url: string
 }
@@ -71,7 +71,7 @@ Mock.mock(/\/videoDetail/, 'get', ({ url }: IMockConfig) => {
   return Mock.mock({
     code: 0,
     result: function () {
-      return videoDetailList.find(item => item.id === id)
-    }
+      return videoDetailList.find((item) => item.id === id)
+    },
   })
 })
