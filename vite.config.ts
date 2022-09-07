@@ -6,10 +6,8 @@ import legacy from '@vitejs/plugin-legacy'
 import { VitePWA } from 'vite-plugin-pwa'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import {
-  ArcoResolver,
-  ElementPlusResolver,
-} from 'unplugin-vue-components/resolvers'
+// ElementPlusResolver,
+import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import WindiCSS from 'vite-plugin-windicss'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 export default defineConfig({
@@ -37,12 +35,12 @@ export default defineConfig({
       eslintrc: {
         enabled: true, // <-- this
       },
-      resolvers: [ElementPlusResolver()],
+      // resolvers: [ElementPlusResolver()],
     }),
     Components({
       dirs: ['src/components'],
       dts: true,
-      resolvers: [ArcoResolver(), ElementPlusResolver()],
+      resolvers: [ArcoResolver()], //, ElementPlusResolver()
       types: [{ from: 'vue-router', names: ['RouterLink', 'RouterView'] }],
     }),
   ],
@@ -54,7 +52,7 @@ export default defineConfig({
   base: '/admin/',
   server: {
     host: '0.0.0.0',
-    // open: true,
-    port: 9527,
+    open: true,
+    port: 4027,
   },
 })

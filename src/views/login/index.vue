@@ -1,35 +1,43 @@
 <template>
-  <div class="h-full w-full relative">
-    <div
-      class="absolute right-60 bottom-52 w-80 h-96 text-blue-300 text-center shadow"
-    >
-      <h1>TiKi Platinum</h1>
-      <h2>6228 8076 2232 8768</h2>
-      <h3>van conf banck</h3>
-      <h4>{{ year }}</h4>
-      <h4>{{ date }}</h4>
-      <h4>{{ time }}</h4>
+  <div class="h-screen w-screen flex justify-between">
+    <div class="w-1/2 flex justify-center items-center">
+      logo
+      <img
+        alt="logo"
+        src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
+      />
     </div>
-    <div class="circle" />
-    <div class="rect" />
+    <div class="w-1/2 flex justify-center items-center">
+      <a-form :model="form" :style="{ width: '400px' }" @submit="handleSubmit">
+        <a-form-item field="account" label="账号">
+          <a-input v-model="form.account" placeholder="请输入账号" />
+        </a-form-item>
+        <a-form-item field="password" label="密码">
+          <a-input v-model="form.password" placeholder="请输入密码" />
+        </a-form-item>
+        <a-form-item>
+          <a-button html-type="submit">登录</a-button>
+        </a-form-item>
+      </a-form>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
-import dayjs from 'dayjs'
-onMounted(() => {
-  Date1()
+import { userStore } from '@/stores/user'
+const user = userStore()
+const form = reactive({
+  account: '',
+  password: '',
+  isRead: false,
 })
-const year = ref(dayjs(new Date()).format('YYYY/MM-DD'))
-const date = ref(dayjs(new Date()).format('MM/DD'))
-const time = ref(dayjs(new Date()).format('hh:mm:ss'))
-function Date1() {
-  setInterval(Date2, 1000) //在1秒后再次执行
+const handleSubmit = (data: any) => {
+  console.log('data', data)
 }
-function Date2() {
-  year.value = dayjs(new Date()).format('YYYY/MM-DD')
-  date.value = dayjs(new Date()).format('MM/DD')
-  time.value = dayjs(new Date()).format('hh:mm:ss')
-}
+onMounted(() => {
+  // Date1()
+})
 </script>
 
-<style scoped></style>
+<!-- <style scoped>
+
+</style> -->

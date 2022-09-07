@@ -11,7 +11,7 @@ module.exports = {
     // 'eslint:recommended',
     'plugin:vue/vue3-essential',
     // 'plugin:vue/vue3-recommended',
-    'plugin:@typescript-eslint/recommended',
+    // 'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended', // 新增，必须放在最后面
   ],
   parser: 'vue-eslint-parser', // // 新增，解析vue文件
